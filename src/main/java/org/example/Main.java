@@ -11,7 +11,18 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        List<Employee> employees = readEmployeeCSV();
+        double minimiumValue = 2000.0;
+
+        List<Employee> greaterThanMinimiumEmployee = employees.stream()
+                .filter(x -> x.getWage() >= minimiumValue)
+                .sorted((x, y) -> x.getEmail().compareToIgnoreCase(y.getEmail()))
+                .toList();
+
+        greaterThanMinimiumEmployee.forEach(x -> {
+            System.out.println(x.getEmail());
+        });
+
     }
 
     public static List<Employee> readEmployeeCSV() {
