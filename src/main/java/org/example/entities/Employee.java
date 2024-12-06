@@ -34,4 +34,9 @@ public class Employee {
     public void setWage(Double wage) {
         this.wage = wage;
     }
+
+    @Override
+    public String toString() {
+        return "%s %s %.2f".formatted(getName(), getEmail(), getWage());
+    }
 }
