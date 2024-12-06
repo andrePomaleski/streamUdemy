@@ -23,6 +23,13 @@ public class Main {
             System.out.println(x.getEmail());
         });
 
+        double startsWithMWage = employees.stream()
+                .filter(x -> x.getName().startsWith("M"))
+                .map(x -> x.getWage())
+                .reduce(0.0, Double::sum);
+
+        System.out.println("%.2f".formatted(startsWithMWage));
+
     }
 
     public static List<Employee> readEmployeeCSV() {
